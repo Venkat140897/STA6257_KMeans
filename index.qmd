@@ -1,6 +1,6 @@
 ---
-title: "Sample Report - Data Science Capstone"
-author: "Student name"
+title: "K means clustering- Data Science Capstone"
+author: "Bala Venkataprasad Sadhana Vittal"
 date: '`r Sys.Date()`'
 format:
   html:
@@ -19,7 +19,7 @@ editor:
 
 ## Introduction
 
-### What is "mehtod"?
+### What is "Kmeans"?
 
 This is an introduction to Kernel regression, which is a non-parametric
 estimator that estimates the conditional expectation of two variables
