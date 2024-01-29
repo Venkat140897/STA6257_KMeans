@@ -108,7 +108,7 @@ International Symposium on Intelligent Information Technology and
 Security Informatics, Jian, China, 2010, pp. 63-67, doi:
 10.1109/IITSI.2010.74.
 
-Summary:
+Summary: venkat
 
 The article introduces clustering as a method for classification of raw
 data and discovering hidden patterns in datasets. It says the
