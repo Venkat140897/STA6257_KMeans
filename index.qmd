@@ -30,8 +30,6 @@ main method to estimate the curve for non-parametric statistics. In
 kernel estimator, weight function is known as kernel function
 [@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
 
-This is my work and I want to add more work...
-
 ### Related work
 
 This section is going to cover the literature review...
@@ -103,3 +101,84 @@ ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total))
 ### Conclusion
 
 ## References
+
+Papers:
+
+Paper 1:
+
+Cite: S. Na, L. Xumin and G. Yong, "Research on k-means Clustering
+Algorithm: An Improved k-means Clustering Algorithm," 2010 Third
+International Symposium on Intelligent Information Technology and
+Security Informatics, Jian, China, 2010, pp. 63-67, doi:
+10.1109/IITSI.2010.74.
+
+Summary:
+
+The article introduces clustering as a method for classification of raw
+data and discovering hidden patterns in datasets. It says the
+application of clustering techniques in various fields such as
+artificial intelligence, biology, customer relationship management, data
+mining, and more. The focus of the paper is on the k-means clustering
+algorithm, a numerical, unsupervised, and iterative method known for its
+simplicity and speed. The standard k-means algorithm involves selecting
+initial cluster centers randomly and iteratively assigning data objects
+to the nearest center until convergence.
+
+This article focuses on the shortcomings of the standard k-means
+algorithm, specifically it calculates the distances for each data object
+in every iteration, leading to inefficiencies in large datasets. To
+address these issues, the paper presents an improved k-means clustering
+algorithm. The key idea involves around using two data structures to
+retain cluster labels and distances, reducing the need for repeated
+distance calculations. This improved algorithm aims to enhance the speed
+and efficiency of clustering while maintaining accuracy.
+
+The paper details the steps of the improved algorithm, defining its time
+complexity, which is claimed to be better than the standard k-means
+algorithm. Experimental results using UCI datasets demonstrate the
+efficiency of the proposed algorithm in terms of reduced running time
+and improved accuracy. Two experiments are conducted, one with iris and
+glass datasets and another with the letter dataset on different values
+of k. The results indicate that the improved k-means algorithm
+outperforms the standard k-means algorithm in terms of overall execution
+time, especially for large-capacity databases.
+
+In conclusion, the paper introduces an improved k-means clustering
+algorithm that addresses the shortcomings of the standard k-means
+algorithm. Experimental results suggest that the proposed algorithm is
+both faster and more accurate, making it a feasible and advantageous
+alternative for clustering tasks.
+
+Paper 2:
+
+Cite: Kodinariya, T. M., & Makwana, P. R. (2013). Review on determining
+number of Cluster in K-Means Clustering. International Journal, 1(6),
+90-95.
+
+Summary: The article says about different approaches to selecting the
+right number of clusters in K-Means clustering. These approaches include
+the rule of thumb, the elbow method, the information criterion approach,
+an information theoretic approach, choosing k using the silhouette, and
+cross-validation. Each approach is explained with its advantages and
+limitations.
+
+The elbow method involves visually identifying a point where the cost
+function (distortion) drops dramatically, suggesting the optimal number
+of clusters. The information criterion approach uses criteria like AIC
+and BIC to balance the likelihood increase with additional parameters.
+An information theoretic approach, based on rate-distortion theory,
+introduces the jump statistic to identify the right number of clusters.
+The silhouette method evaluates within-cluster tightness and separation
+to determine the optimal number of clusters.
+
+Finally, the article concludes cross-validation as an approach for
+estimating the number of clusters based on stability of cluster.
+Different studies and modifications of cross-validation are presented,
+focusing on their effectiveness and robustness on various datasets.
+
+we can conclude, the article clarifies the significance of studying the
+properties of K-Means clustering, especially in determining the right
+number of clusters. It acknowledges the controdiction surrounding this
+issue and explores approaches that may provide meaningful insights into
+the clustering process, addressing the practical challenges in various
+application areas.
