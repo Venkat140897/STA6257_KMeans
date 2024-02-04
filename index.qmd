@@ -21,41 +21,121 @@ editor:
 
 ### What is "Kmeans"?
 
-This is an introduction to Kernel regression, which is a non-parametric
-estimator that estimates the conditional expectation of two variables
-which is random. The goal of a kernel regression is to discover the
-non-linear relationship between two random variables. To discover the
-non-linear relationship, kernel estimator or kernel smoothing is the
-main method to estimate the curve for non-parametric statistics. In
-kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
+K-means clustering is a method of grouping objects based on
+similarities. The first thing we do was to choose the desired number of
+groups (K), and then we randomly assign possible group centers. Next,
+each item was allocated to the group that was nearest to it. We then
+determined the new locations of the groups according to the contents of
+each one. Until the groups showed little improvement, this will be
+repeated till we get the best result.
 
-### Related work
+### Week 4 -papers:
 
-This section is going to cover the literature review...
+Paper 1:
+
+An efficient k-means clustering algorithm: analysis and implementation
+
+Cite : T. Kanungo, D. M. Mount, N. S. Netanyahu, C. D. Piatko, R.
+Silverman and A. Y. Wu, "An efficient k-means clustering algorithm:
+analysis and implementation," in IEEE Transactions on Pattern Analysis
+and Machine Intelligence, vol. 24, no. 7, pp. 881-892, July 2002, doi:
+10.1109/TPAMI.2002.1017616. keywords: {Clustering algorithms;Algorithm
+design and analysis;Iterative algorithms;Filtering algorithms;Machine
+learning algorithms;Data compression;Pattern recognition;Data
+mining;Data structures;Data analysis},
+
+Summary:
+
+The paper highlights the clustering problems in different applications
+and introduces k-means clustering, giving importance to Lloyd's
+algorithm's popularity. It also highlights the algorithm's simplicity
+but identifies its slowness due to computing nearest neighbors. The
+paper proposes the filtering algorithm, an efficient implementation of
+Lloyd's algorithm, storing data points in a kd-tree and demonstrating
+its effectiveness through detailed analysis and experiments. The
+filtering algorithm is efficient even when clusters are not
+well-separated, offering a promising improvement for k-means clustering.
+
+The filtering algorithm is an optimized implementation of Lloyd's
+k-means using a kd-tree structure, and performs best in clustering by
+refining candidate center selection through axis-aligned splitting
+hyperplanes and efficient trimming. Shifting from conventional
+worst-case scenarios, the paper conducts a data-sensitive analysis,
+amplifying the impact of well-separated clusters on algorithm
+efficiency. Theoretical findings, taking advantage of a balanced
+box-decomposition tree (BBD-tree), indicate bounded expected node visits
+under specific conditions, using Chebyshev's inequality and a
+probabilistic framework. Assessments across synthetic and real-world
+datasets demonstrate the filtering algorithm's superior efficiency
+against kd-center and brute-force algorithms, particularly for
+well-separated clusters. The algorithm shows linear scalability with
+data size and good performance in moderate dimensions. Real-world
+applications in color quantization, image compression, and image
+segmentation affirm its consistent efficiency, outperforming the BIRCH
+clustering scheme and underscoring its utility in different scenarios.
+The comprehensive assessments highlights the filtering algorithm's
+potential to enhance clustering outcomes, emphasizing its advantages
+over existing methods.
+
+In conclusion, The filtering algorithm for Lloyd's k-means clustering
+demonstrates notable efficiency in both synthetic and real-world
+datasets. Its simplicity, reliance on a one-time kd-tree construction,
+and scalability to higher dimensions make it a practical choice.
+Empirical analyses reveal superior performance compared to alternative
+methods, showcasing its potential as an effective and competitive
+solution for k-means clustering. Opportunities for improvement,
+particularly in information exchange between stages, highlight avenues
+for future research.
+
+Paper 2:
+
+Research on K-Value Selection Method of K-Means Clustering Algorithm
+
+Cite: Yuan C, Yang H. Research on K-Value Selection Method of K-Means
+Clustering Algorithm. J. 2019; 2(2):226-235.
+<https://doi.org/10.3390/j2020016>
+
+Summary:
+
+This paper introduces the significance of cluster analysis in data
+mining, focusing on the K-means algorithm. The importance of cluster
+analysis in data mining is explored in this work, with particular
+attention on the K-means algorithm, a partition based clustering
+technique that is commonly used to classify data without prior
+knowledge. We examine the shortcomings and advances of the traditional
+K-means technique, including kd-tree implementation, improved methods
+based on various information domains, and category domain extensions.
+Moreover, the use of clustering in medical imaging and the integration
+of deep learning techniques are covered. The speedy K-value
+determination is the main goal of the paper. The K-means approach, four
+K-value selection techniques, and their experimental results are covered
+in the following sections. In order to minimize the sum of squares for
+each type in the clustering targets, the K-means method uses the
+Euclidean distance for centroid distance calculation in this iterative
+clustering process.
+
+The significance of choosing the appropriate K value on result stability
+is highlighted in the research as a critical factor in getting optimal
+clustering outcomes. The study thoroughly assesses three K-value
+selection methods using the Iris data set. The canopy algorithm confirms
+K=2 for the Iris data set, the Elbow Method finds an inflection point,
+and the Gap Statistic and Silhouette Coefficient produce optimal results
+at K=2.
+
+in conclusion, we have four K-value selection algorithms, Elbow Method,
+Gap Statistic, Silhouette Coefficient, and Canopy, using the Iris data
+set. Results indicate that each algorithm has unique characteristics.
+The Elbow Method is simple but depends on an obvious inflection point.
+The Gap Statistic is effective but resource intensive, especially for
+large datasets. Silhouette Coefficient considers cohesion and separation
+but has high computational complexity. The Canopy algorithm, suitable
+for large datasets, enhances fault tolerance. For small datasets, all
+methods work, but for large and complex datasets, Canopy appears as the
+optimal choice. The paper suggests further experiments with real-world
+multidimensional data to explore algorithm performance and potential
+improvements.
 
 ## Methods
-
-The common non-parametric regression model is
-$Y_i = m(X_i) + \varepsilon_i$, where $Y_i$ can be defined as the sum of
-the regression function value $m(x)$ for $X_i$. Here $m(x)$ is unknown
-and $\varepsilon_i$ some errors. With the help of this definition, we
-can create the estimation for local averaging i.e. $m(x)$ can be
-estimated with the product of $Y_i$ average and $X_i$ is near to $x$. In
-other words, this means that we are discovering the line through the
-data points with the help of surrounding data points. The estimation
-formula is printed below [@R-base]:
-
-$$
-M_n(x) = \sum_{i=1}^{n} W_n (X_i) Y_i  \tag{1}
-$$ $W_n(x)$ is the sum of weights that belongs to all real numbers.
-Weights are positive numbers and small if $X_i$ is far from $x$.
-
-Another equation:
-
-$$
-y_i = \beta_0 + \beta_1 X_1 +\varepsilon_i
-$$
 
 ## Analysis and Results
 
@@ -69,30 +149,13 @@ library(tidyverse)
 library(knitr)
 library(ggthemes)
 library(ggrepel)
-library(dslabs)
 ```
 
 ```{r, warning=FALSE, echo=TRUE}
-# Load Data
-kable(head(murders))
-
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
-
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
 
 ```
 
-### Statistical Modeling
+### 
 
 ```{r}
 
@@ -101,14 +164,16 @@ ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total))
 Cite: Bradley, P. S., Bennett, K. P., & Demiriz, A. (2000). Constrained
 k-means clustering. Microsoft Research, Redmond, 20(0), 0.
 
-Summary: K-Means clustering algorithm maintains that each cluster
-contains a minimum number of points. This algorithm helps when
-constraints during the cluster assignment step, which can be solved
-through linear programming or network simplex methods. The main
-objective is to guarantee a sufficient population within each cluster.
-Constrained K-Means are less prone to local minima than traditional
-K-Means, suggesting the benefits of adding constraints even when
-allowing empty clusters.
+Summary:
+
+K-Means clustering algorithm maintains that each cluster contains a
+minimum number of points. This algorithm helps when constraints during
+the cluster assignment step, which can be solved through linear
+programming or network simplex methods. The main objective is to
+guarantee a sufficient population within each cluster. Constrained
+K-Means are less prone to local minima than traditional K-Means,
+suggesting the benefits of adding constraints even when allowing empty
+clusters.
 
 this paper introduces the concept of robust clustering by adding an
 "outlier" cluster with a fixed distance to gather outliers far from true
@@ -125,9 +190,11 @@ solution is often superior when appropriate constraints and cluster
 sizes are chosen. Overall, the extension of K-Means with constraints
 opens up possibilities for robust and domain-specific clustering.
 
-paper 2: cite: Application of k-Means Clustering algorithm for
-prediction of Students’ Academic Performance Oyelade, O. J Oladipupo, O.
-O ,Obagbuwa, I. C
+paper 2:
+
+Cite: Application of k-Means Clustering algorithm for prediction of
+Students’ Academic Performance Oyelade, O. J Oladipupo, O. O ,Obagbuwa,
+I. C
 
 The paper discusses the development and implementation of a system for
 analyzing students' academic performance using cluster analysis and
@@ -152,7 +219,7 @@ size. The paper discusses the trends observed in students' performance
 within various clusters, providing insights into the effectiveness of
 the k-means clustering approach.
 
-In conclusion, the paper emphasizes the simplicity and efficiency of the
+In conclusion, the paper focus on the simplicity and efficiency of the
 k-means clustering algorithm as a tool for monitoring students' academic
 performance in higher institutions. It highlights the potential benefits
 of using data mining methods, such as clustering algorithms, to discover
@@ -161,7 +228,7 @@ predictions. Overall, the paper contributes to the discussion on
 leveraging clustering techniques for academic performance analysis and
 decision-making in educational institutions.
 
-Week 3:
+### Week 3:
 
 Paper 1:
 
@@ -192,8 +259,8 @@ labels and distances, reducing the need for repeated distance
 calculations. This improved algorithm aims to enhance the speed and
 efficiency of clustering while maintaining accuracy.
 
-The paper explains the steps of the improved algorithm, definines its
-time complexity, which is claimed to be better than the standard k-means
+The paper explains the steps of the improved algorithm, defines its time
+complexity, which is claimed to be better than the standard k-means
 algorithm. Experimental results using UCI datasets demonstrate the
 efficiency of the proposed algorithm in terms of reduced running time
 and improved accuracy. Two experiments are conducted, one with iris and
@@ -222,7 +289,7 @@ cross-validation. Each approach is explained with its advantages and
 limitations.
 
 The elbow method involves visually identifying a point where the cost
-function (distortion) drops dramatically, suggesting the optimal number
+function (distortion) drops drastically, suggesting the optimal number
 of clusters. The information criterion approach uses criteria like AIC
 and BIC to balance the likelihood increase with additional parameters.
 An information theoretic approach, based on rate-distortion theory,
@@ -230,119 +297,9 @@ introduces the jump statistic to identify the right number of clusters.
 The silhouette method evaluates within-cluster tightness and separation
 to determine the optimal number of clusters.
 
-Finally, the article concludes cross-validation as an approach for
-estimating the number of clusters based on stability of cluster.
-Different studies and modifications of cross-validation are presented,
-focusing on their effectiveness and robustness on various datasets.
-
 we can conclude, the article clarifies the significance of studying the
 properties of K-Means clustering, especially in determining the right
 number of clusters. It acknowledges the controdiction surrounding this
 issue and explores approaches that may provide meaningful insights into
 the clustering process, addressing the practical challenges in various
 application areas.
-
-week 4:
-
-Paper 1:
-
-An efficient k-means clustering algorithm: analysis and implementation
-
-Cite : T. Kanungo, D. M. Mount, N. S. Netanyahu, C. D. Piatko, R.
-Silverman and A. Y. Wu, "An efficient k-means clustering algorithm:
-analysis and implementation," in IEEE Transactions on Pattern Analysis
-and Machine Intelligence, vol. 24, no. 7, pp. 881-892, July 2002, doi:
-10.1109/TPAMI.2002.1017616. keywords: {Clustering algorithms;Algorithm
-design and analysis;Iterative algorithms;Filtering algorithms;Machine
-learning algorithms;Data compression;Pattern recognition;Data
-mining;Data structures;Data analysis},
-
-Summary:
-
-The paper highlights the clustering problems in different applications
-and introduces k-means clustering, giving importance to Lloyd's
-algorithm's popularity. It also highlights the algorithm's simplicity
-but identifies its slowness due to computing nearest neighbors. The
-paper proposes the filtering algorithm, an efficient implementation of
-Lloyd's algorithm, storing data points in a kd-tree and demonstrating
-its effectiveness through detailed analyses and experiments. The
-filtering algorithm is efficient even when clusters are not
-well-separated, offering a promising improvement for k-means clustering.
-
-The filtering algorithm, an optimized implementation of Lloyd's k-means
-utilizing a kd-tree structure, excels in clustering by refining
-candidate center selection through axis-aligned splitting hyperplanes
-and efficient pruning. Shifting from conventional worst-case scenarios,
-the paper conducts a data-sensitive analysis, emphasizing the impact of
-well-separated clusters on algorithm efficiency. Theoretical findings,
-leveraging a balanced box-decomposition tree (BBD-tree), indicate
-bounded expected node visits under specific conditions, using
-Chebyshev's inequality and a probabilistic framework. Empirical
-assessments across synthetic and real-world datasets demonstrate the
-filtering algorithm's superior efficiency against kd-center and
-brute-force algorithms, particularly for well-separated clusters. The
-algorithm showcases linear scalability with data size and good
-performance in moderate dimensions. Real-world applications in color
-quantization, image compression, and image segmentation affirm its
-consistent efficiency, outperforming the BIRCH clustering scheme and
-underscoring its utility in diverse scenarios. The comprehensive
-assessments highlight the filtering algorithm's potential to enhance
-clustering outcomes, emphasizing its advantages over existing methods.
-
-In conclusion, The filtering algorithm for Lloyd's k-means clustering
-demonstrates notable efficiency in both synthetic and real-world
-datasets. Its simplicity, reliance on a one-time kd-tree construction,
-and scalability to higher dimensions make it a practical choice.
-Empirical analyses reveal superior performance compared to alternative
-methods, showcasing its potential as an effective and competitive
-solution for k-means clustering. Opportunities for improvement,
-particularly in information exchange between stages, highlight avenues
-for future research.
-
-Paper 2:
-
-Research on K-Value Selection Method of K-Means Clustering Algorithm
-
-Cite: Yuan C, Yang H. Research on K-Value Selection Method of K-Means
-Clustering Algorithm. J. 2019; 2(2):226-235.
-<https://doi.org/10.3390/j2020016>
-
-Summary:
-
-This paper introduces the significance of cluster analysis in data
-mining, focusing on the K-means algorithm. The importance of cluster
-analysis in data mining is explored in this work, with particular
-attention on the K-means algorithm, a partition-based clustering
-technique that is commonly used to classify data without prior
-knowledge. We examine the shortcomings and advances of the traditional
-K-means technique, including kd-tree implementation, improved methods
-based on various information domains, and category domain extensions.
-Moreover, the use of clustering in medical imaging and the integration
-of deep learning techniques are covered. The speedy K-value
-determination is the main goal of the paper. The K-means approach, four
-K-value selection techniques, and their experimental results are covered
-in the following sections. In order to minimize the sum of squares for
-each type in the clustering targets, the K-means method uses the
-Euclidean distance for centroid distance calculation in this iterative
-clustering process.
-
-The significance of choosing the appropriate K value on result stability
-is highlighted in the research as a critical factor in getting optimal
-clustering outcomes. The study thoroughly assesses three K-value
-selection methods using the Iris data set: the Canopy algorithm confirms
-K=2 for the Iris data set, the Elbow Method finds an inflection point,
-and the Gap Statistic and Silhouette Coefficient produce optimal results
-at K=2.
-
-in conclusion, we have four K-value selection algorithms, Elbow Method,
-Gap Statistic, Silhouette Coefficient, and Canopy, using the Iris data
-set. Results indicate that each algorithm has unique characteristics.
-The Elbow Method is simple but relies on an obvious inflection point.
-The Gap Statistic is effective but resource-intensive, especially for
-large datasets. Silhouette Coefficient considers cohesion and separation
-but has high computational complexity. The Canopy algorithm, suitable
-for large datasets, enhances fault tolerance. For small datasets, all
-methods work, but for large and complex datasets, Canopy appears as the
-optimal choice. The paper suggests further experiments with real-world
-multidimensional data to explore algorithm performance and potential
-improvements.
